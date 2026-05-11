@@ -197,12 +197,10 @@ export default function MindflowTracker() {
           <div style={s.voiceRow}>
             <button
               style={{...s.micBtn,...(isRecording?s.micBtnActive:{})}}
-              onPointerDown={!isRecording ? startVoice : undefined}
-              onPointerUp={isRecording ? stopVoice : undefined}
-              onPointerLeave={isRecording ? stopVoice : undefined}>
+              onClick={isRecording ? stopVoice : startVoice}>
               {isRecording ? "🔴" : "🎤"}
             </button>
-            <span style={s.recStatus}>{recStatus || "Нажмите и говорите"}</span>
+            <span style={s.recStatus}>{recStatus || "Нажмите 🎤 — говорите — нажмите 🔴"}</span>
           </div>
           <textarea style={s.textarea} rows={3} placeholder="Что происходило? Как себя чувствовали?" value={form.text} onChange={e=>setForm(f=>({...f,text:e.target.value}))}/>
           <button style={s.addBtn} onClick={addEntry}>Сохранить запись</button>
